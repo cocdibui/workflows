@@ -18,7 +18,10 @@ on:
         required: true
 
 env:
+  ENVIRONMENT: ${{ inputs.environment }}
   SERVICE: ${{ inputs.service }}
+  VERSION: ${{ inputs.version }}
+  REPO: ${{ inputs.repo }}
 
 jobs:
   update-pre-release:
