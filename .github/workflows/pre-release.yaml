@@ -24,7 +24,7 @@ env:
   REPO: ${{ inputs.repo }}
 
 jobs:
-  release:
+  update-pre-release:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -32,11 +32,21 @@ jobs:
           repository: cocdibui/actions
           token: ${{ secrets.envPAT }}
           path: coinmap-actions
-      - id: deploy
-        uses: ./coinmap-actions/deploy
-      # - uses: ./coinmap-actions/notification
-      #   with:
-      #     version: ${{ steps.deploy.outputs.version }}
-      #     environment: ${{ steps.deploy.outputs.environment }}
+      - id: update-pre-release
+        uses: ./coinmap-actions/update-pre-release
 
 
+  # notification:
+  #   needs: [update-pre-release]
+  #   runs-on: self-hosted
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         repository: cocdibui/actions
+  #         token: ${{ secrets.envPAT }}
+  #         path: coinmap-actions
+  #     - uses: ./coinmap-actions/notification
+  #       with:
+  #         version: ${{needs.build-docker.outputs.build-version}}
+  #         environment: ${{ steps.deploy.outputs.environment }}
+  #         status: "failure"
