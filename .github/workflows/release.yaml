@@ -1,27 +1,8 @@
 on:
   workflow_call:
-    inputs:
-      environment:
-        required: false
-        type: string
-      service:
-        required: false
-        type: string
-      version:
-        required: true
-        type: string
-      repo:
-        required: true
-        type: string
     secrets:
       envPAT:
         required: true
-
-env:
-  ENVIRONMENT: ${{ inputs.environment }}
-  SERVICE: ${{ inputs.service }}
-  VERSION: ${{ inputs.version }}
-  REPO: ${{ inputs.repo }}
 
 jobs:
   release:
