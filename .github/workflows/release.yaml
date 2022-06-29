@@ -34,6 +34,8 @@ jobs:
           path: coinmap-actions
       - id: deploy
         uses: ./coinmap-actions/deploy
+        with:
+          version: "prod"
       # - uses: ./coinmap-actions/notification
       #   with:
       #     version: ${{ steps.deploy.outputs.version }}
