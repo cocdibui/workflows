@@ -34,6 +34,10 @@ jobs:
           path: coinmap-actions
       - id: update-pre-release
         uses: ./coinmap-actions/update-pre-release
+        env:
+          SERVICE: ${{ inputs.service }}
+          VERSION: "test"
+          
 
 
   # notification:
